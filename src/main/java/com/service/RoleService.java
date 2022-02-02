@@ -1,14 +1,13 @@
 package com.service;
 
 import com.entity.RoleEntity;
+import com.exceptions.RoleAlreadyExistException;
+import com.exceptions.RoleNotFoundException;
 import com.model.RoleModel;
 import com.repository.RoleRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import exceptions.RoleAlreadyExistException;
-import exceptions.RoleNotFoundException;
 
 @Service
 public class RoleService {

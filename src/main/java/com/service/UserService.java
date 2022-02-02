@@ -3,14 +3,13 @@ package com.service;
 import javax.transaction.Transactional;
 
 import com.entity.UserEntity;
+import com.exceptions.UserAlreadyExistException;
+import com.exceptions.UserNotFoundException;
 import com.model.UserModel;
 import com.repository.UserRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import exceptions.UserAlreadyExistException;
-import exceptions.UserNotFoundException;
 
 @Service
 public class UserService {
