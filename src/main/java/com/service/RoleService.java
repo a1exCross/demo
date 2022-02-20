@@ -24,6 +24,16 @@ public class RoleService {
         return roleRepo.save(roleEntity);
     }
 
+    public void delete(Long id) throws RoleNotFoundException
+    {
+        if (roleRepo.findById(id) == null)
+        {
+            throw new RoleNotFoundException("Роль не найдена");
+        }
+
+        roleRepo.deleteById(id);
+    }
+
     public RoleModel getOneRole(Long id) throws RoleNotFoundException
     {
         if (roleRepo.findById(id) == null)
@@ -31,5 +41,31 @@ public class RoleService {
             throw new RoleNotFoundException("Роль не найдена");
         }
         return RoleModel.to_model(roleRepo.findById(id).get());
+    }
+
+    public RoleEntity update(Long id, RoleEntity roleEntity) throws RoleNotFoundException
+    {
+        RoleEntity role = roleRepo.findById(id).get();
+
+        if (role == null)
+        {
+            throw new RoleNotFoundException("Роль не найдена");
+        }
+
+        if (roleEntity.getName() != null)
+            role.setName(roleEntity.getName());
+
+            if (roleEntity.is_create() != null)
+                role.set_create(roleEntity.is_create()); 
+
+                if (roleEntity.is_read() != null)
+                    role.set_read(roleEntity.is_read()); 
+
+                    if (roleEntity.is_update() != null)
+                        role.set_update(roleEntity.is_update());
+
+                        if (roleEntity.is_delete() != null)
+                            role.set_delete(roleEntity.is_delete()); 
+        return roleRepo.save(role);                    
     }
 }

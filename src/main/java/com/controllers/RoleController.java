@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -62,11 +63,30 @@ public class RoleController
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity delteRole(@PathVariable Long id)
+    public ResponseEntity deleteRole(@PathVariable Long id)
     {
         try 
         {
-            return ResponseEntity.ok().body(roleService.getOneRole(id));
+            roleService.delete(id);
+            return ResponseEntity.ok().body("Роль успешно удалена");
+        }
+        catch (RoleNotFoundException e) 
+        {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        catch (Exception e) 
+        {
+            return ResponseEntity.badRequest().body("Произошла ошибка");
+        }
+    }
+
+    @PatchMapping
+    public ResponseEntity updateRole(@RequestParam Long id, @RequestBody RoleEntity roleEntity)
+    {
+        try 
+        {
+            roleService.update(id, roleEntity);
+            return ResponseEntity.ok().body("Информация о роли успешно обновлена");
         }
         catch (RoleNotFoundException e) 
         {

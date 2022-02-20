@@ -1,7 +1,5 @@
 package com.controllers;
 
-import javax.transaction.Transactional;
-
 import com.entity.UserEntity;
 import com.exceptions.UserAlreadyExistException;
 import com.exceptions.UserNotFoundException;

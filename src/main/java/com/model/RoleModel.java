@@ -5,10 +5,10 @@ import com.entity.RoleEntity;
 public class RoleModel {
     
     private String name;
-    private boolean _create;
-    private boolean _read;
-    private boolean _update;
-    private boolean _delete;
+    private Boolean _create;
+    private Boolean _read;
+    private Boolean _update;
+    private Boolean _delete;
 
     public static RoleModel to_model(RoleEntity roleEntity)
     {
@@ -29,35 +29,35 @@ public class RoleModel {
         this.name = name;
     }
 
-    public boolean is_create() {
+    public Boolean is_create() {
         return this._create;
     }
 
-    public void set_create(boolean _create) {
+    public void set_create(Boolean _create) {
         this._create = _create;
     }
 
-    public boolean is_read() {
+    public Boolean is_read() {
         return this._read;
     }
 
-    public void set_read(boolean _read) {
+    public void set_read(Boolean _read) {
         this._read = _read;
     }
 
-    public boolean is_update() {
+    public Boolean is_update() {
         return this._update;
     }
 
-    public void set_update(boolean _update) {
+    public void set_update(Boolean _update) {
         this._update = _update;
     }
 
-    public boolean is_delete() {
+    public Boolean is_delete() {
         return this._delete;
     }
 
-    public void set_delete(boolean _delete) {
+    public void set_delete(Boolean _delete) {
         this._delete = _delete;
     }
 
